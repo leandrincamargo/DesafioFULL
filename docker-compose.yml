@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  desafiofull.api:
+    image: ${DOCKER_REGISTRY-}desafiofullapi
+    build:
+      context: .
+      dockerfile: DesafioFULL.Api/Dockerfile
