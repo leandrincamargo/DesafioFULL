@@ -11,11 +11,11 @@ namespace DesafioFULL.Api.Controllers
     [Produces("application/json")]
     [Route("[controller]")]
     [ApiController]
-    public class DebtController : ControllerBase
+    public class DebtsController : ControllerBase
     {
         private readonly IDebtService _debtService;
 
-        public DebtController(IDebtService debtService)
+        public DebtsController(IDebtService debtService)
         {
             _debtService = debtService;
         }
@@ -27,8 +27,8 @@ namespace DesafioFULL.Api.Controllers
         {
             try
             {
-                var games = _debtService.GetDebts();
-                return Ok(games);
+                var debts = _debtService.GetDebts();
+                return Ok(debts);
             }
             catch (Exception ex)
             {
