@@ -1,0 +1,40 @@
+<mat-table [dataSource]="debts" class="custom-table">
+
+  <ng-container matColumnDef="number">
+    <mat-header-cell *matHeaderCellDef> Número do Título </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.number}} </mat-cell>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="debtorName">
+    <mat-header-cell *matHeaderCellDef> Nome do Devedor </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.debtorName | capitalizefirst }} </mat-cell>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="totalInstallments">
+    <mat-header-cell *matHeaderCellDef> Quantidade de Parcelas </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.totalInstallments}} </mat-cell>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="originalValue">
+    <mat-header-cell *matHeaderCellDef> Valor Original </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.originalValue | currency:'BRL' }} </mat-cell>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="overDue">
+    <mat-header-cell *matHeaderCellDef> Dias em Atraso </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.overDue}} </mat-cell>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="updatedValue">
+    <mat-header-cell *matHeaderCellDef> Valor Atualizado </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.updatedValue | currency:'BRL' }} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

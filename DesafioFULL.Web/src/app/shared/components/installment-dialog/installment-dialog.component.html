@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>Nova Parcela</h2>
+<mat-dialog-content>
+  <form [formGroup]="installmentForm">
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Número da Parcela" formControlName="number" type="number">
+          <mat-error *ngIf="installmentForm.controls['number'].hasError('required')">
+            O Número da Parcela é <strong>obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Data de Vencimento" formControlName="dueDate" type="date">
+          <mat-error *ngIf="installmentForm.controls['dueDate'].hasError('required')">
+            A Data de Vencimento é <strong>obrigatória</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Valor" formControlName="value" prefix="R$ " mask="separator.2"
+            thousandSeparator=".">
+          <mat-error *ngIf="installmentForm.controls['value'].hasError('required')">
+            O Valor é <strong>obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button class="mat-primary" (click)="onAdd()">Adicionar</button>
+</mat-dialog-actions>

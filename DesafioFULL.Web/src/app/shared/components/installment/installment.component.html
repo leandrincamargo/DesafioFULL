@@ -1,0 +1,24 @@
+<button type="button" aria-label="Nova Parcela" mat-button (click)="onNewInstallment()">
+  <mat-icon>add</mat-icon>
+  <span class="button-span">Nova Parcela</span>
+</button>
+
+<mat-table [dataSource]="_installments">
+  <ng-container matColumnDef="number">
+    <mat-header-cell *matHeaderCellDef> Número da Parcela </mat-header-cell>
+    <mat-cell *matCellDef="let ingredient"> {{ingredient.number}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="dueDate">
+    <mat-header-cell *matHeaderCellDef> Data de Vencimento </mat-header-cell>
+    <mat-cell *matCellDef="let ingredient"> {{ingredient.dueDate | date:'dd/MM/yyyy'}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="value">
+    <mat-header-cell *matHeaderCellDef> Valor </mat-header-cell>
+    <mat-cell *matCellDef="let ingredient"> {{ingredient.value | currency:'BRL'}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

@@ -1,0 +1,61 @@
+<form [formGroup]="debtForm" (ngSubmit)="onSubmit()">
+  <mat-card class="debt-card">
+    <mat-card-header>
+      <mat-card-title>Dívida</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Número do Título" formControlName="number" type="number">
+            <mat-error *ngIf="debtForm.controls['number'].hasError('required')">
+              O Número do Título é <strong>obrigatório</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Nome do Devedor" formControlName="debtorName">
+            <mat-error *ngIf="debtForm.controls['debtorName'].hasError('required')">
+              O Nome do Devedor é <strong>obrigatório</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="CPF do Devedor" formControlName="debtorCpf" mask="000.000.000-00">
+            <mat-error *ngIf="debtForm.controls['debtorCpf'].hasError('required')">
+              O CPF do Devedor é <strong>obrigatório</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Porcentagem de Multa" formControlName="interestPercent" suffix=" %"
+              mask="separator.2" thousandSeparator=".">
+            <mat-error *ngIf="debtForm.controls['interestPercent'].hasError('required')">
+              A Porcentagem de Multa é <strong>obrigatória</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Porcentagem de Juros" formControlName="penaltyPercent" suffix=" %"
+              mask="separator.2" thousandSeparator=".">
+            <mat-error *ngIf="debtForm.controls['penaltyPercent'].hasError('required')">
+              A Porcentagem de Juros é <strong>obrigatória</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <app-installment [(installments)]="installments"></app-installment>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Salvar</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
